@@ -1,4 +1,6 @@
 ﻿using CareerCompass.Models.JobModels;
+using CareerCompass.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace CareerCompass.WebMVC.Controllers
         // GET: Job
         public ActionResult Index()
         {
-            var model = new JobListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new JobServices(userId);
+            var model = service.GetJobs();
+
             return View(model);
         }
 
@@ -27,11 +32,17 @@ namespace CareerCompass.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(JobCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
-            }
             return View(model);
+            }
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new JobServices(userId);
+
+            service.CreateJob(model);
+
+            return RedirectToAction("Index");
         }
 
     }
