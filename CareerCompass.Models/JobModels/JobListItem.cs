@@ -9,7 +9,7 @@ namespace CareerCompass.Models.JobModels
 {
     public class JobListItem
     {
-        public int NoteId { get; set; }
+        public int JobId { get; set; }
 
         public string CompanyName { get; set; }
 

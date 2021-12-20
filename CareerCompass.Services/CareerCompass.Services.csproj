@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JobServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CareerCompass.Data\CareerCompass.Data.csproj">
+      <Project>{e7b57d6d-64eb-4be0-9376-28ddf7cb04f9}</Project>
+      <Name>CareerCompass.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareerCompass.Models\CareerCompass.Models.csproj">
+      <Project>{d90ac300-c222-49b6-a428-cdb8d14a5d96}</Project>
+      <Name>CareerCompass.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
