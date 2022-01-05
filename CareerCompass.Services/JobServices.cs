@@ -1,4 +1,5 @@
 ﻿using CareerCompass.Data;
+using CareerCompass.Models;
 using CareerCompass.Models.JobModels;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,29 @@ namespace CareerCompass.Services
                 return query.ToArray();
             }
         }
+
+        public JobDetail GetJobById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Jobs
+                        .Single(e => e.JobId == id && e.OwnerId == _userId);
+                return
+                    new JobDetail
+                    {
+                        JobId = entity.JobId,
+                        CompanyName = entity.CompanyName,
+                        JobTitle = entity.JobTitle,
+                        CompanyAddress = entity.CompanyAddress,
+                        JobNotes = entity.JobNotes,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc,
+                    };
+            }
+        }
+
 
     }
 }
