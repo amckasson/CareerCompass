@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="JobDetail.cs" />
     <Compile Include="JobModels\JobCreate.cs" />
+    <Compile Include="JobModels\JobEdit.cs" />
     <Compile Include="JobModels\JobListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
