@@ -82,6 +82,22 @@ namespace CareerCompass.Services
             }
         }
 
+        public bool UpdateJob(JobEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Jobs.Single(e => e.JobId == model.JobId && e.OwnerId == _userId);
+
+                entity.CompanyName = model.CompanyName;
+                entity.CompanyAddress = model.CompanyAddress;
+                entity.JobTitle = model.JobTitle;
+                entity.JobNotes = model.JobNotes;
+                entity.ModifiedUtc = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
 
     }
 }

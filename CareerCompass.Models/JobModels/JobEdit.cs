@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CareerCompass.Models.JobModels
 {
-    class JobEdit
+    public class JobEdit
     {
         public int JobId { get; set; }
 

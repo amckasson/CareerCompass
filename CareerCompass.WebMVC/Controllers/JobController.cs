@@ -55,6 +55,21 @@ namespace CareerCompass.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateJobService();
+            var detail = service.GetJobById(id);
+            var model = new JobEdit
+            {
+                JobId = detail.JobId,
+                CompanyName = detail.CompanyName,
+                CompanyAddress = detail.CompanyAddress,
+                JobTitle = detail.JobTitle,
+                JobNotes = detail.JobNotes
+            };
+            return View(model);
+        }
+
 
         private JobServices CreateJobService()
         {
